@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap Icons y CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>CONJUNTOS</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4 shadow">
+                    <h2 class="text-center text-primary mb-4">Realiza una donación</h2>
+                    <form id="donate-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Tu nombre completo</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" id="donation-email" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="donation-amount" class="form-label">Monto a donar</label>
+                            <select id="donation-amount" class="form-select" required>
+                                <option value="10">S/ 10</option>
+                                <option value="20">S/ 20</option>
+                                <option value="50">S/ 50</option>
+                                <option value="100">S/ 100</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+
+                        <!-- Campo adicional para monto personalizado, oculto por defecto -->
+                        <div class="mb-3" id="custom-amount-container" style="display: none;">
+                            <label for="other-amount" class="form-label">Monto personalizado</label>
+                            <input type="number" id="other-amount" class="form-control" placeholder="Ingresa tu monto">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Mensaje (opcional)</label>
+                            <textarea id="message" class="form-control" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Realizar donación</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Gracias por contribuir a nuestra causa.</p>
+                        <a href="#" class="text-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón para abrir el modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+        Iniciar sesión (Administrador)
+    </button>
+
+    <!-- Modal de inicio de sesión -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-admin-form">
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Correo electrónico</label>
+                            <input type="email" id="login-email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Contraseña</label>
+                            <input type="password" id="login-password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p><a href="#" class="text-primary">¿Olvidaste tu contraseña?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="firebase_config.js"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="donate-form.js"></script>
+</body>
+</html>
+
