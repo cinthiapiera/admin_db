@@ -1,21 +1,18 @@
 // Importa las funciones necesarias de Firebase Authentication y Firestore
-import { auth } from './firebase_config.js';
-import { signOut } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js';
-import { getFirestore, doc, getDoc, collection, onSnapshot } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js';
-
-// Inicializa Firestore
-const db = getFirestore();
+import { auth, db } from './firebase_config.js';
+import { signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js';
+import { doc, getDoc, collection, onSnapshot } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js';
 
 // Elemento donde se insertarán las donaciones
 const donationsTableBody = document.getElementById('donations-table-body');
 
 // Verificar el estado de autenticación al cargar la página
-auth.onAuthStateChanged((user) => {
+onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("Usuario autenticado:", user);
     checkAdminPrivileges(user);
   } else {
-    window.location.href = "login.html";
+    window.location.href = "../index.html";
   }
 });
 
@@ -24,7 +21,7 @@ function loadDonations() {
   onSnapshot(collection(db, "donations"), (snapshot) => {
     donationsTableBody.innerHTML = "";
 
-    snapshot.forEach((doc) => {
+    snapshot.docs.forEach((doc) => { // 🔥 Corrección aquí
       const donation = doc.data();
 
       const row = document.createElement("tr");
@@ -52,7 +49,7 @@ function checkAdminPrivileges(user) {
         loadDonations(); // Cargar donaciones en tiempo real
       } else {
         alert("No tienes permisos de administrador.");
-        window.location.href = "index.html";
+        window.location.href = "../index.html";
       }
     })
     .catch((error) => {
@@ -64,10 +61,12 @@ function checkAdminPrivileges(user) {
 // Función para cerrar sesión
 const logoutButton = document.getElementById("logout-button");
 logoutButton.addEventListener("click", () => {
-  signOut(auth).then(() => {
-    console.log("Usuario desconectado.");
-    window.location.href = "index.html";
-  }).catch((error) => {
-    console.error("Error al cerrar sesión:", error);
-  });
+  signOut(auth)
+    .then(() => {
+      console.log("Usuario desconectado.");
+      window.location.href = "../index.html";
+    })
+    .catch((error) => {
+      console.error("Error al cerrar sesión:", error);
+    });
 });

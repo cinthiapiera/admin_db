@@ -9,6 +9,7 @@
     <title>CONJUNTOS</title>
 </head>
 <body>
+    <div id="donation-message" class="alert d-none"></div>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -47,19 +48,17 @@
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Realizar donación</button>
                     </form>
-                    <div class="text-center mt-3">
-                        <p>Gracias por contribuir a nuestra causa.</p>
-                        <a href="#" class="text-primary">Más información</a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Botón para abrir el modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-        Iniciar sesión (Administrador)
-    </button>
+    <div class="d-flex justify-content-center mt-4">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Iniciar sesión (Administrador)
+        </button>
+    </div>
 
     <!-- Modal de inicio de sesión -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -70,6 +69,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <!-- Contenedor para alertas -->
+                    <div id="login-alert" class="alert d-none text-center"></div>
                     <form id="login-admin-form">
                         <div class="mb-3">
                             <label for="login-email" class="form-label">Correo electrónico</label>
@@ -81,9 +82,6 @@
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
                     </form>
-                    <div class="text-center mt-3">
-                        <p><a href="#" class="text-primary">¿Olvidaste tu contraseña?</a></p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -91,9 +89,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="firebase_config.js"></script>
-    <script type="module" src="script.js"></script>
-    <script type="module" src="donate-form.js"></script>
+    <script type="module" src="/js/firebase_config.js"></script>
+    <script type="module" src="/js/auth.js"></script>
+    <script type="module" src="/js/donate-form.js"></script>
 </body>
 </html>
-
