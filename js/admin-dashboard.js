@@ -12,7 +12,7 @@ onAuthStateChanged(auth, (user) => {
     console.log("Usuario autenticado:", user);
     checkAdminPrivileges(user);
   } else {
-    window.location.href = "../index.html";
+    window.location.href = "index.html";
   }
 });
 
@@ -49,7 +49,7 @@ function checkAdminPrivileges(user) {
         loadDonations(); // Cargar donaciones en tiempo real
       } else {
         alert("No tienes permisos de administrador.");
-        window.location.href = "../index.html";
+        window.location.href = "index.html";
       }
     })
     .catch((error) => {
@@ -64,7 +64,7 @@ logoutButton.addEventListener("click", () => {
   signOut(auth)
     .then(() => {
       console.log("Usuario desconectado.");
-      window.location.href = "../index.html";
+      window.location.href = "index.html";
     })
     .catch((error) => {
       console.error("Error al cerrar sesión:", error);
