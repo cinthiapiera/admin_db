@@ -43,7 +43,7 @@ if (loginForm) {
       if (adminSnap.exists()) {
         showLoginAlert("¡Acceso concedido! Redirigiendo...", "success");
         setTimeout(() => {
-          window.location.href = "./pages/admin-dashboard.html";
+          window.location.href = "../pages/admin-dashboard.html";
         }, 2000);
       } else {
         showLoginAlert("No tienes permisos de administrador.", "danger");
